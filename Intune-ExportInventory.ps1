@@ -16,10 +16,10 @@
 ## Variables
 ###############################################################################
 $WorkingDirectory      = "C:\Scripts\Intune-ExportInventory"
-$OutputCSVFile         = "\\DSK-AUTOMATION\Data2"
+$OutputCSVFile         = "\\*.csv"
 
-
-$TenantId = "ac41c7d4-1f61-460d-b0f4-fc925a2b471c"
+$AADClientApplicationCredentialsFile = "Insert .xml credentials path here"
+$TenantId = "insert tenant ID here"
 
 ###############################################################################
 ## Functions
@@ -97,16 +97,14 @@ Start-Transcript "IntuneInventoryExport_Transcript.txt"
 try {
     Write-Host "Authenticating to Azure AD..."
 
-    <#$Creds = Get-CredentialsFromXML -filePath $AADClientApplicationCredentialsFile
+    $Creds = Get-CredentialsFromXML -filePath $AADClientApplicationCredentialsFile
 
     if (-not $Creds) {
         throw "Failed to retrieve credentials from XML."
     }
 
     $ClientId = $Creds.UserName
-    $ClientSecret = $Creds.GetNetworkCredential().Password#>
-
-
+    $ClientSecret = $Creds.GetNetworkCredential().Password
 
     $AccessToken = Get-AzureADToken -TenantId $TenantId -ClientId $ClientId -ClientSecret $ClientSecret
     if (-not $AccessToken) {
