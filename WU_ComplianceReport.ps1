@@ -29,10 +29,10 @@
 ###############################################################################
 
 # User Input Section
-$DeviceList = "E:\_Automation\WindowsUpdateComplianceReport\DATA\IntuneInventory.csv"
+$DeviceList = "*.csv"
 
 # Script Variables
-$WorkingFolder = "E:\_Automation\WindowsUpdateComplianceReport"    # Location where you want to create reporting folders
+$WorkingFolder = "insert path here"    
 $startTime = Get-Date
 $Date = Get-Date -Format "MMMM dd, yyyy"
 $OutFileMP = "$WorkingFolder\MicrosoftPatchList.csv"
